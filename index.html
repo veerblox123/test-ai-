@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Sprout — your open knowledge AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark">✳</div><span>sprout</span><button class="icon-button close-sidebar" id="closeSidebar" aria-label="Close menu">×</button></div>
+      <button class="new-chat" id="newChat"><span>＋</span> New chat <kbd>⌘ K</kbd></button>
+      <div class="side-label">YOUR SPACE</div>
+      <button class="side-link active" id="chatNav"><span>▤</span> Chat</button>
+      <button class="side-link" id="memoryNav"><span>✎</span> Teach Sprout <span class="count" id="memoryCount">0</span></button>
+      <div class="side-label recent-label">RECENT</div>
+      <div class="history" id="history"></div>
+      <div class="side-bottom"><div class="local-badge"><span class="green-dot"></span><div><b>Your space, your data</b><small>Chats and notes stay in this browser</small></div></div><button class="about-link" id="aboutButton">ⓘ &nbsp; How Sprout works</button></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><button class="icon-button menu-button" id="menuButton" aria-label="Open menu">☰</button><div class="model-pill"><span class="green-dot"></span> Open knowledge <span class="chevron">⌄</span></div><div class="top-actions"><button class="icon-button" id="aboutTop" title="About Sprout">ⓘ</button><div class="avatar">S</div></div></header>
+      <section class="conversation" id="conversation" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="welcome-icon">✳</div><div class="eyebrow">A LITTLE CURIOSITY GOES A LONG WAY</div>
+          <h1>Hey there. What are<br>we <em>growing</em> today?</h1>
+          <p class="welcome-copy">Ask me something, or teach me what you know.<br>I’ll look things up in Wikipedia and show my sources.</p>
+          <div class="suggestions">
+            <button class="suggestion" data-prompt="How do trees communicate with each other?"><span class="suggestion-icon mint">↗</span><span><b>How do trees talk?</b><small>Explore the hidden forest network</small></span><span class="arrow">↗</span></button>
+            <button class="suggestion" data-prompt="Explain how a black hole works in simple terms."><span class="suggestion-icon lilac">◉</span><span><b>What’s inside a black hole?</b><small>Big questions, simple answers</small></span><span class="arrow">↗</span></button>
+            <button class="suggestion" data-prompt="What is the history of the internet?"><span class="suggestion-icon peach">⌁</span><span><b>How did the internet begin?</b><small>A tiny history of everything online</small></span><span class="arrow">↗</span></button>
+          </div>
+          <div class="teach-hint">✦ &nbsp;Make Sprout more <button id="teachInline">you</button> by adding your own notes.</div>
+        </div>
+        <div class="messages" id="messages"></div>
+        <div class="loading" id="loading" hidden><div class="sprout-mini">✳</div><div><b>Let me look into that</b><small>Searching open knowledge…</small></div><div class="dots"><i></i><i></i><i></i></div></div>
+      </section>
+      <footer class="composer-area"><form class="composer" id="chatForm"><textarea id="prompt" rows="1" placeholder="Ask anything…" aria-label="Your message"></textarea><button class="send-button" id="sendButton" aria-label="Send message">↑</button></form><div class="composer-foot"><span>Sprout can make mistakes. Check sources for important things.</span><span>Powered by <b>open knowledge</b> ✳</span></div></footer>
+    </main>
+  </div>
+  <div class="overlay" id="overlay"></div>
+  <section class="modal" id="memoryModal" role="dialog" aria-modal="true" aria-labelledby="memoryTitle" hidden>
+    <button class="modal-close" data-close aria-label="Close">×</button><div class="modal-icon">✎</div><div class="eyebrow">YOUR PERSONAL KNOWLEDGE</div><h2 id="memoryTitle">Teach Sprout something</h2><p>Add a fact, a preference, or your own notes. Sprout can use these in future answers. They’re saved only in this browser.</p>
+    <label for="memoryTitleInput">Give your note a title</label><input id="memoryTitleInput" maxlength="80" placeholder="e.g. My garden project">
+    <label for="memoryBody">What should Sprout remember?</label><textarea id="memoryBody" rows="5" maxlength="4000" placeholder="Write a few sentences…"></textarea>
+    <div class="modal-actions"><button class="button-quiet" data-close>Cancel</button><button class="button-primary" id="saveMemory">Save note <span>→</span></button></div>
+    <div class="saved-notes" id="savedNotes"></div>
+  </section>
+  <section class="modal about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" hidden>
+    <button class="modal-close" data-close aria-label="Close">×</button><div class="modal-icon">✳</div><div class="eyebrow">A SMALL, OPEN BEGINNING</div><h2 id="aboutTitle">How Sprout works</h2><p>Sprout is a no-key learning project. It searches Wikipedia when you ask a question, then builds a short answer from the pages it finds. Your saved notes can add personal context.</p><div class="about-points"><div><span>01</span><b>Ask a question</b><small>Sprout searches Wikipedia’s open encyclopedia.</small></div><div><span>02</span><b>See where it came from</b><small>Answers include links to the pages used.</small></div><div><span>03</span><b>Teach it your context</b><small>Your notes are stored on this device only.</small></div></div><div class="honesty"><b>A note on “learning”</b><br>Sprout doesn’t train a large language model. Training something comparable to ChatGPT takes enormous datasets and computing. This app is a practical first step: open-source retrieval, simple answer composition, and memory you control.</div><button class="button-primary full-button" data-close>Got it <span>→</span></button>
+  </section>
+  <script src="app.js"></script>
+</body>
+</html>
